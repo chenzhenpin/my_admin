@@ -28,13 +28,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/sys/user/login")
-                    .failureUrl("/security/login?error")
-//                    .loginProcessingUrl("/security/toLogin")
-                    .successForwardUrl("/sys/user/index")
-                    .permitAll()
+                .loginPage("/sys/user/login")
+                .failureUrl("/sys/user/failHandler")
+                // .loginProcessingUrl("/security/toLogin")
+                .successForwardUrl("/sys/user/successHandler")
+                .permitAll()
                 .and()
-                .logout().logoutUrl("/sys/user/logout").permitAll();
+                .logout().logoutUrl("/sys/user/logout").permitAll()
+                .and().csrf().disable();
 
     }
 }
