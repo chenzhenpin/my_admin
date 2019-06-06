@@ -60,10 +60,10 @@ public class SysUserController {
 
     @RequestMapping("/login")
     public ResData login(){
-        return ResData.fail().setCode(ResData.NO_LOGIN_CODE);
+        return ResData.fail().setCode(ResData.NO_LOGIN_CODE).setMsg("未登录");
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping("/logoutHandler")
     public ResData logout(HttpSession session){
         //session失效
         session.invalidate();
@@ -72,8 +72,14 @@ public class SysUserController {
     @RequestMapping("/successHandler")
     public ResData successHandler() {
         return ResData.ok().setMsg("登录成功");
-    }@RequestMapping("/failHandler")
-    public ResData failHandler() {
-        return ResData.ok().setMsg("登录失败");
     }
+    @RequestMapping("/failHandler")
+    public ResData failHandler() {
+        return ResData.fail().setMsg("登录失败");
+    }
+    @RequestMapping("/")
+    public ResData index() {
+        return ResData.ok().setMsg("hello word");
+    }
+
 }

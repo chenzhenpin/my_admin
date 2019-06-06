@@ -29,12 +29,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/sys/user/login")
-                .failureUrl("/sys/user/failHandler")
+                .failureForwardUrl("/sys/user/failHandler")
                 // .loginProcessingUrl("/security/toLogin")
                 .successForwardUrl("/sys/user/successHandler")
                 .permitAll()
                 .and()
-                .logout().logoutUrl("/sys/user/logout").permitAll()
+                .logout().logoutUrl("/sys/user/logout").logoutSuccessHandler(new LogoutHandler()).permitAll()
                 .and().csrf().disable();
 
     }
