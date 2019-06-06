@@ -69,4 +69,11 @@ public class SysUserController {
         session.invalidate();
         return ResData.ok().setMsg("退出成功");
     }
+    @RequestMapping("/successHandler")
+    public ResData successHandler() {
+        return ResData.ok().setMsg("登录成功");
+    }@RequestMapping("/failHandler")
+    public ResData failHandler() {
+        return ResData.ok().setMsg("登录失败");
+    }
 }
