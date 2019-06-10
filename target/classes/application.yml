@@ -22,7 +22,6 @@ spring:
     type: ehcache
     ehcache:
       config: classpath:/ehcache.xml
-
   session:
     store-type: redis
   redis:

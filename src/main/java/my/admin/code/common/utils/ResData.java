@@ -2,6 +2,7 @@ package my.admin.code.common.utils;
 
 public class ResData {
     public static final int NO_LOGIN_CODE=10000;//未登录
+    public static final int NO_AUTH_CODE=40000;//没有权限
     public static final int PARAM_EMPTY_CODE=203;//参数为空
     private Boolean success;
     private Integer code;

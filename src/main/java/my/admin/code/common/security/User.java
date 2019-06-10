@@ -3,7 +3,6 @@ package my.admin.code.common.security;
 import my.admin.code.common.utils.SpringUtil;
 import my.admin.code.sys.entity.SysRole;
 import my.admin.code.sys.service.ISysRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,8 +49,7 @@ public class User implements UserDetails {
         ISysRoleService sysRoleService =SpringUtil.getBean(ISysRoleService.class);
         List<SysRole> roles = sysRoleService.getRolesByUserId(id);
         for (SysRole role : roles) {
-            auths.add(new SimpleGrantedAuthority(role.getRoleName()));
-
+            auths.add(new SimpleGrantedAuthority(role.getRoleCode()));
         }
         return auths;
     }

@@ -5,9 +5,9 @@ import my.admin.code.sys.entity.SysUser;
 import my.admin.code.sys.form.RegisterForm;
 import my.admin.code.sys.service.ISysUserService;
 import my.admin.code.sys.validator.RegisterValidator;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -58,11 +58,6 @@ public class SysUserController {
         return ResData.ok();
     }
 
-    @RequestMapping("/login")
-    public ResData login(){
-        return ResData.fail().setCode(ResData.NO_LOGIN_CODE).setMsg("未登录");
-    }
-
     @RequestMapping("/logoutHandler")
     public ResData logout(HttpSession session){
         //session失效
@@ -80,6 +75,12 @@ public class SysUserController {
     @RequestMapping("/")
     public ResData index() {
         return ResData.ok().setMsg("hello word");
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping("/getUser")
+    public ResData getUser() {
+        return ResData.ok().setData(sysUserService.list());
     }
 
 }
