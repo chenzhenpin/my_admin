@@ -153,11 +153,12 @@
             <artifactId>quartz</artifactId>
             <version>${quartz.version}</version>
         </dependency>
+        <!-- JWT -->
         <dependency>
-		    <groupId>org.apache.shiro</groupId>
-		    <artifactId>shiro-core</artifactId>
-		    <version>${shiro.version}</version>
-		</dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
 		<!--<dependency>-->
 		    <!--<groupId>org.apache.shiro</groupId>-->
 		    <!--<artifactId>shiro-spring</artifactId>-->
