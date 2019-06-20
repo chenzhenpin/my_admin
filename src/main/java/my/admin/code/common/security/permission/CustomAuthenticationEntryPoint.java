@@ -16,7 +16,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
        response.setContentType("text/json;charset=utf-8");
         PrintWriter writer = response.getWriter();
-        writer.println(JSON.toJSONString(ResData.fail().setCode(ResData.NO_LOGIN_CODE).setMsg("没有未登录")));
+        writer.println(JSON.toJSONString(ResData.fail().setCode(ResData.NO_LOGIN_CODE).setMsg("未登录")));
     }
 }
 
