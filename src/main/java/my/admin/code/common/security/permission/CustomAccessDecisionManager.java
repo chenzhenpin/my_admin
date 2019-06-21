@@ -11,6 +11,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+/**
+ * 处理权限通过不通过
+ */
 @Component
 public class CustomAccessDecisionManager implements AccessDecisionManager {
     @Override

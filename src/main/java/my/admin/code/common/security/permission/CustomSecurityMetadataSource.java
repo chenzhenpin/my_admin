@@ -16,6 +16,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 返回需要判断的资源
+ */
 @Component
 public class CustomSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
     //所有需要权限的url
