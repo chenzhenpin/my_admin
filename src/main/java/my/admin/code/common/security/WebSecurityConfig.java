@@ -4,8 +4,6 @@ import my.admin.code.common.security.jwt.JWTUtils;
 import my.admin.code.common.security.permission.AuthenticationTokenFilter;
 import my.admin.code.common.security.permission.CustomAuthenticationEntryPoint;
 import my.admin.code.common.security.permission.MyFilterSecurityInterceptor;
-import my.admin.code.common.security.qq.QQAuthenticatioManager;
-import my.admin.code.common.security.qq.QQAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +17,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled =true)//启用注解
@@ -69,16 +65,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class)
             .addFilter(new AuthenticationTokenFilter(authenticationManager(),customUserService(),jwtUtils));
-//        http.addFilterAt(qqAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 
-//    private QQAuthenticationFilter qqAuthenticationFilter(){
-//        QQAuthenticationFilter authenticationFilter = new QQAuthenticationFilter("/login/qq");
-//        authenticationFilter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
-//        authenticationFilter.setAuthenticationManager(new QQAuthenticatioManager());
-//        return authenticationFilter;
-//    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
