@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Role;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -83,6 +84,11 @@ public class SysUserController {
         return ResData.ok().setMsg("hello word");
     }
 
+    @RequestMapping("/info")
+    public ResData info() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResData.ok().setData(userDetails.getUsername());
+    }
 
     @RequestMapping("/getUser")
     public ResData getUser() {
